@@ -1,0 +1,9 @@
+Comparing the lowes's website cookies in incognito mode, it does not have as many cookies as the normal browser and it does not
+record the browsing history.
+Also, the Recently Views section does not show up in incognito mode (since cookies are disabled).
+Incognito mode is mostly used for security purposes. Especially when the user is using other user's computer
+or device. Information stored in the cookies such as, user name or password can be used by other people if the cookies
+are not cleared or no encryption protects information as such.  Other reasons are to avoid any excessive advertisements
+and preventing any tricky price increase when the user is trying to buy an item. 
+For testing purposes, incognito is usefull to start a webpage in a clean state everytime the testers opens it. This gives
+the tester a more accurate testing if it needs to be replicated and prevents any other possible conflicts. 
