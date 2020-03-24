@@ -1,0 +1,47 @@
+
+pm.test("Successful POST request", function () {
+    pm.expect(pm.response.code).to.be.oneOf([201,202]);
+});//successful pushing data
+
+pm.test("Status code name has string", function () {
+    pm.response.to.have.status("Created");
+});//for successfully adding data
+
+pm.test("Content-Type is present", function () {
+    pm.response.to.have.header("Content-Type");
+});//confirm getting response with content back
+
+pm.test("Check if First Name is empty", function () {
+    var jsonData = pm.response.json(); 
+    pm.expect(jsonData.firstName).to.be.empty;
+});
+
+pm.test("Respons value for First Name is the same as input", function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.firstName).to.eql("insert name here");
+});//confirm the same data added for first name
+
+pm.test("Check if Last Name is empty", function () {
+     var jsonData = pm.response.json(); 
+     pm.expect(jsonData.lastName).to.be.empty;
+});
+
+pm.test("Response value for Last Name is the same as input", function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.lastName).to.eql("insert name here");
+});//confirm the same data added for last name
+
+
+pm.test("Check if Last Name is empty", function () {
+     var jsonData = pm.response.json(); 
+     pm.expect(jsonData.specialties).to.be.empty;
+});
+
+pm.test("Response value for Specialties is the same as input", function () {
+    var jsonData = pm.response.json();
+    pm.expect(jsonData.specialties).to.eql([{id:0, name:''}]);
+});//confirm the same data added for specialties
+
+
+    
+

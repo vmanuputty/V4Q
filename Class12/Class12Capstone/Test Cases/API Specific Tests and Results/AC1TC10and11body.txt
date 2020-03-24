@@ -1,11 +1,11 @@
-	{
+{
         "id": null,
         "firstName": " ",
         "lastName": " ",
         "specialties": [
         	{
-        		"id": 1,
+        		"id": 0,
         		"name": ""
         	}
         ]
-   }
+}
