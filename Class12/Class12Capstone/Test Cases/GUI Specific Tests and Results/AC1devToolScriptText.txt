@@ -1,0 +1,40 @@
+Copy paste the codes under until formSubmit!
+
+For AC1TC4:
+const firstName = document.getElementById('firstName');
+const lastName = document.getElementById('lastName');
+const formSubmit = document.getElementById("vet");
+const event = new Event('input', { bubbles: true });
+const submit = new Event('submit', { bubbles: true });
+firstName.value = 'input name here';
+lastName.value = 'input name here';
+firstName.dispatchEvent(event);
+lastName.dispatchEvent(event);
+formSubmit.dispatchEvent(submit);
+
+Use this code when going back to add new vets to reset the form:
+window.location.reload();
+
+For AC1TC6:
+const firstName = document.getElementById('firstName');
+const formSubmit = document.getElementById("vet");
+const event = new Event('input', { bubbles: true });
+const submit = new Event('submit', { bubbles: true });
+firstName.value = 'input name here';
+firstName.dispatchEvent(event);
+formSubmit.dispatchEvent(submit);
+
+Use this code to reset the form before inputing the next script:
+window.location.reload();
+
+For AC1TC7:
+const lastName = document.getElementById('lastName');
+const formSubmit = document.getElementById("vet");
+const event = new Event('input', { bubbles: true });
+const submit = new Event('submit', { bubbles: true });
+lastName.value = 'input name here';
+lastName.dispatchEvent(event);
+formSubmit.dispatchEvent(submit);
+
+Use this code when going back to add new vets to reset the form:
+window.location.reload();

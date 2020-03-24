@@ -1,0 +1,22 @@
+var data = {
+id: 76,
+firstName: "lay",
+lastName: "john",
+specialties: [
+{
+id: 42,
+name: "Nutrition"
+}
+]
+}
+
+fetch('https://clinic.doveryai-no-proveryai.com/petclinic/api/vets')
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    appendData(data);
+  })
+  .catch(function (err) {
+    console.log(err);
+  });
