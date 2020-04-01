@@ -1,0 +1,163 @@
+
+//Adding Libraries
+import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
+import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
+import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+import com.kms.katalon.core.model.FailureHandling as FailureHandling
+import com.kms.katalon.core.testcase.TestCase as TestCase
+import com.kms.katalon.core.testdata.TestData as TestData
+import com.kms.katalon.core.testobject.TestObject as TestObject
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
+import internal.GlobalVariable as GlobalVariable
+
+//Manually added this Library to be able to generate a string with random characters
+import org.apache.commons.lang.RandomStringUtils
+
+//Assigning variable type int to variable name RN
+int RN
+
+//Open a new browser window
+WebUI.openBrowser('')
+
+//Loging in through api address to get cookies and bypass separate login section from the regular website
+WebUI.navigateToUrl('http://vet_admin:admin@clinic.doveryai-no-proveryai.com:9966/petclinic/swagger-ui.html')
+
+//Opening the website
+WebUI.navigateToUrl('https://clinic.doveryai-no-proveryai.com/petclinic/')
+
+//Finds Veterianarians tab and Clicks on on tab to view a drop down list
+WebUI.click(findTestObject('Object Repository/Page_SpringPetclinicAngular/a_Veterinarians'))
+
+//Finds the Add New button from the Veterinarians tab drop down list and Clicks on the button 
+WebUI.click(findTestObject('Object Repository/Page_SpringPetclinicAngular/a_Add New'))
+
+//A test to make sure on the right webpage for Adding New Veterinarians by finding the Header tag with New Veterinarians
+WebUI.verifyElementText(findTestObject('Page_SpringPetclinicAngular/h2_New Veterinarian'), 'New Veterinarian')
+
+
+//Manual steps. Not used or run, just for explanantion for what the scripts in the loop do 
+/*
+random = org.apache.commons.lang.RandomStringUtils.randomAlphabetic(4)
+
+WebUI.setText(findTestObject('Object Repository/Page_SpringPetclinicAngular/input_First Name_firstName'), 'FirstTest' + random)
+
+WebUI.setText(findTestObject('Object Repository/Page_SpringPetclinicAngular/input_Last Name_lastName'), 'LastTest' + random)
+
+RN = ((Math.random() * 7) as int)
+
+WebUI.selectOptionByValue(findTestObject('Object Repository/Page_SpringPetclinicAngular/select_Backiotomy  dentistry  General Pract_06843f'),
+		RN+': Object', true)
+
+WebUI.click(findTestObject('Object Repository/Page_SpringPetclinicAngular/button_Save Vet'))
+
+if (WebUI.verifyElementText(findTestObject('Page_SpringPetclinicAngular/h2_Veterinarians'), 'Veterinarians') == true)
+	{
+		//Confirming data are saved with a comment internally displayed in the console
+		WebUI.comment("Success Adding New Veterinarian!")
+	}
+
+WebUI.click(findTestObject('Object Repository/Page_SpringPetclinicAngular/button_Add Vet'))
+
+WebUI.verifyElementText(findTestObject('Page_SpringPetclinicAngular/h2_New Veterinarian'), 'New Veterinarian')
+
+random = org.apache.commons.lang.RandomStringUtils.randomAlphabetic(4)
+
+WebUI.setText(findTestObject('Object Repository/Page_SpringPetclinicAngular/input_First Name_firstName'), 'FirstTest' + random)
+
+WebUI.setText(findTestObject('Object Repository/Page_SpringPetclinicAngular/input_Last Name_lastName'), 'LastTest' + random)
+
+RN = ((Math.random() * 7) as int)
+
+WebUI.selectOptionByValue(findTestObject('Object Repository/Page_SpringPetclinicAngular/select_Backiotomy  dentistry  General Pract_06843f'),
+		RN+': Object', true)
+
+WebUI.click(findTestObject('Object Repository/Page_SpringPetclinicAngular/button_Save Vet'))
+
+if (WebUI.verifyElementText(findTestObject('Page_SpringPetclinicAngular/h2_Veterinarians'), 'Veterinarians') == true)
+	{
+		//Confirming data are saved with a comment internally displayed in the console
+		WebUI.comment("Success Adding New Veterinarian!")
+	}
+
+WebUI.click(findTestObject('Object Repository/Page_SpringPetclinicAngular/button_Add Vet'))
+
+WebUI.verifyElementText(findTestObject('Page_SpringPetclinicAngular/h2_New Veterinarian'), 'New Veterinarian')
+
+random = org.apache.commons.lang.RandomStringUtils.randomAlphabetic(4)
+
+WebUI.setText(findTestObject('Object Repository/Page_SpringPetclinicAngular/input_First Name_firstName'), 'FirstTest' + random)
+
+WebUI.setText(findTestObject('Object Repository/Page_SpringPetclinicAngular/input_Last Name_lastName'), 'LastTest' + random)
+
+RN = ((Math.random() * 7) as int)
+
+WebUI.selectOptionByValue(findTestObject('Object Repository/Page_SpringPetclinicAngular/select_Backiotomy  dentistry  General Pract_06843f'),
+		RN+': Object', true)
+
+WebUI.click(findTestObject('Object Repository/Page_SpringPetclinicAngular/button_Save Vet'))
+
+if (WebUI.verifyElementText(findTestObject('Page_SpringPetclinicAngular/h2_Veterinarians'), 'Veterinarians') == true)
+	{
+		//Confirming data are saved with a comment internally displayed in the console
+		WebUI.comment("Success Adding New Veterinarian!")
+	}
+
+*/
+
+//For Loop statement to run the script 3 times with different test data. The loop is to reduce script writting repetitions. The number of loops can be changed to any positive number
+for (int i = 0; i < 2; i++) {
+	
+	//Assigning random 4 characters to variable name random
+	def random = org.apache.commons.lang.RandomStringUtils.randomAlphabetic(4)
+
+	//Finds First Name input box and enters FirstTest added with 4 random characters from variable random for the First Name 
+    WebUI.setText(findTestObject('Object Repository/Page_SpringPetclinicAngular/input_First Name_firstName'), 'FirstTest' + 
+        random)
+	
+	//Assigning different random 4 characters to variable name random
+	random = org.apache.commons.lang.RandomStringUtils.randomAlphabetic(4)
+
+	//Finds Last Name input box and enters LastTest added with 4 random characters from varibale random for the Last Name
+    WebUI.setText(findTestObject('Object Repository/Page_SpringPetclinicAngular/input_Last Name_lastName'), 'LastTest' + 
+        random)
+	
+	//Assigning avrandom number between 0 and 7, 0 and 7 included, to variable name RN
+	RN = ((Math.random() * 7) as int)
+	
+	//Finds Specialties Type drop dwon list and randomly choose the type based on RN value
+	WebUI.selectOptionByValue(findTestObject('Object Repository/Page_SpringPetclinicAngular/select_Backiotomy  dentistry  General Pract_06843f'),
+		RN+': Object', true)
+
+	//Finds Save Vet button and clicks on the button
+    WebUI.click(findTestObject('Object Repository/Page_SpringPetclinicAngular/button_Save Vet'))
+	
+	//A test to make sure on the right webpage after Adding New Veterinarians by finding the Header tag with Veterinarians
+	if (WebUI.verifyElementText(findTestObject('Page_SpringPetclinicAngular/h2_Veterinarians'), 'Veterinarians') == true)
+	{
+		//Confirming data are saved with a comment internally displayed in the console
+		WebUI.comment("Success Adding New Veterinarian!")
+	}
+	
+	//If statement that clicks Add Vet button only for 2 times to stop navigating back to New Veterinarians Form page  
+    if (i < 1) {
+		
+		//Finds Add Vet button and clicks it
+        WebUI.click(findTestObject('Object Repository/Page_SpringPetclinicAngular/button_Add Vet'))
+		
+		//A test to make sure on the right webpage for Adding New Veterinarians by finding the Header tag with New Veterinarians
+		WebUI.verifyElementText(findTestObject('Page_SpringPetclinicAngular/h2_New Veterinarian'), 'New Veterinarian')
+    }
+}
+
+//Closes the browser after all scripts are executed
+WebUI.closeBrowser()
+
+
+

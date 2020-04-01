@@ -1,0 +1,17 @@
+Instructions to create a Test Case in Katalon
+
+1. Open Katalon
+2. Click on File tab
+3. Click on New
+4. Select Project
+5. Enter any name for the Project
+6. Let everything else by default
+7. Click OK
+8. Close Katalon TestOps Integration window (click x on window)
+9. Click on File tab
+10. Click on New
+11. Select Test Case
+12. Rename Test Case to anything or leave it by default
+13. Click Ok
+14. Click Script tab on the Test Case window
+15. Copy paste script in the script input area
